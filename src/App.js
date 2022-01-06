@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import ActivityFeed from './components/ActivityFeed';
+import ActivityDetail from './components/ActivityDetail';
+import Archived from './components/Archived';
+import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Router>
+            <Routes>
+              <Route path="/" exact element={<ActivityFeed />} />
+              <Route path="/activity/:activityId" exact element={<ActivityDetail />} />
+              <Route path="/archived/" exact element={<Archived />} />
+              <Route>404 Not Found</Route>
+            </Routes>
+      </Router>
   );
 }
 
